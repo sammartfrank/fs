@@ -6,13 +6,14 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 // Earth
 const Earth = new THREE.SphereGeometry(0.5, 64, 64);
 const material = new THREE.MeshPhongMaterial({
-  map: new THREE.TextureLoader().load(
-    'https://acaua.gitlab.io/webgl-with-threejs/img/textures/earth/earth-texture.jpg'
-  ),
-  bumpMap: new THREE.TextureLoader().load('/assets/png/clouds4k.png'),
+  // map: new THREE.TextureLoader().load(
+  //   'https://acaua.gitlab.io/webgl-with-threejs/img/textures/earth/earth-texture.jpg'
+  // ),
+  map: new THREE.TextureLoader().load('/assets/png/cloudless4k.jpg'),
+  bumpMap: new THREE.TextureLoader().load('./assets/png/clouds4k.png'),
   bumpScale: 0.00005,
-  specularMap: new THREE.TextureLoader('/assets/water_4k.png'),
-  specular: new THREE.Color('blue'),
+  specularMap: new THREE.TextureLoader('./assets/water_4k.png'),
+  specular: new THREE.Color('grey'),
   shininess: 2,
 });
 let earth = new THREE.Mesh(Earth, material);
@@ -30,7 +31,7 @@ moon.position.x = 10;
 const clouds = new THREE.Mesh(
   new THREE.SphereGeometry(0.5 + 0.003, 32, 32),
   new THREE.MeshPhongMaterial({
-    map: new THREE.TextureLoader().load('/assets/png/clouds4k.png'),
+    map: new THREE.TextureLoader().load('./assets/png/clouds4k.png'),
     transparent: true,
   })
 );
@@ -39,15 +40,12 @@ const clouds = new THREE.Mesh(
 const background = new THREE.Mesh(
   new THREE.SphereGeometry(240, 64, 64),
   new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load('/assets/png/galaxy_starfield.png'),
+    map: new THREE.TextureLoader().load('./assets/png/galaxy_starfield.png'),
     side: THREE.BackSide,
   })
 );
 
-const newBg = new THREE.Mesh(
-  new THREE.SphereGeometry(140, 64, 64),
-)
-
+const newBg = new THREE.Mesh(new THREE.SphereGeometry(140, 64, 64));
 
 // Lighting
 var ambientLight = new THREE.AmbientLight(0x333333);
@@ -109,18 +107,17 @@ Array(500).fill().forEach(addStars);
 
 // Handlers
 function moveCamera() {
-
   const t = document.body.getBoundingClientRect().top;
 
   camera.position.x = t * -0.001;
-  camera.position.y= t * -0.0001;
+  camera.position.y = t * -0.0001;
 }
 
 function animate() {
   requestAnimationFrame(animate);
   earth.rotation.y += 0.002;
   moon.rotation.y += 0.0001;
-  clouds.rotation.y += 0.0018;  
+  clouds.rotation.y += 0.0018;
 
   // Orbit
   moon.position.x = -10 * Math.cos(earth.rotation.y);

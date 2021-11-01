@@ -88,7 +88,6 @@ section {
   margin: 0 auto;
 }
 
-
 img {
   display: inline;
   margin: 0 auto;
@@ -103,6 +102,7 @@ img {
   top: 38.6%;
   left: 15%;
   text-align: center;
+  transition: 0.5s;
   user-select: none;
 }
 
@@ -114,7 +114,10 @@ img {
   cursor: pointer;
 }
 
-
+.frank:hover {
+  filter: grayscale(0%);
+  transition: 0.5s;
+}
 
 @keyframes textAnimate {
   0% {
