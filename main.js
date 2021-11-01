@@ -2,34 +2,37 @@ import './style.css';
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-
+import earth from './assets/earth.jpg';
+import moon from './assets/moon.jpg';
+import clouds from './assets/clouds.png';
+import water from './assets/water.png';
+import galaxy from './assets/galaxy.png';
 // Earth
 const Earth = new THREE.SphereGeometry(0.5, 64, 64);
 const material = new THREE.MeshPhongMaterial({
-
-  map: new THREE.TextureLoader().load('assets/earth.jpg'),
-  bumpMap: new THREE.TextureLoader().load('assets/clouds.png'),
+  map: new THREE.TextureLoader().load(earth),
+  bumpMap: new THREE.TextureLoader().load(clouds),
   bumpScale: 0.00005,
-  specularMap: new THREE.TextureLoader('assets/water.png'),
+  specularMap: new THREE.TextureLoader(water),
   specular: new THREE.Color('grey'),
   shininess: 2,
 });
-let earth = new THREE.Mesh(Earth, material);
+let earthObject = new THREE.Mesh(Earth, material);
 
 // Moon
 const Moon = new THREE.SphereGeometry(0.125, 32, 32);
 const moonMaterial = new THREE.MeshPhongMaterial({
-  map: new THREE.TextureLoader().load('assets/moon.jpg'),
+  map: new THREE.TextureLoader().load(moon),
 });
-let moon = new THREE.Mesh(Moon, moonMaterial);
+let moonObject = new THREE.Mesh(Moon, moonMaterial);
 9;
-moon.position.x = 10;
+moonObject.position.x = 10;
 
 // Clouds
-const clouds = new THREE.Mesh(
+const cloudsObject = new THREE.Mesh(
   new THREE.SphereGeometry(0.5 + 0.003, 32, 32),
   new THREE.MeshPhongMaterial({
-    map: new THREE.TextureLoader().load('assets/clouds.png'),
+    map: new THREE.TextureLoader().load(clouds),
     transparent: true,
   })
 );
@@ -38,12 +41,10 @@ const clouds = new THREE.Mesh(
 const background = new THREE.Mesh(
   new THREE.SphereGeometry(240, 64, 64),
   new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load('assets/galaxy.png'),
+    map: new THREE.TextureLoader().load(galaxy),
     side: THREE.BackSide,
   })
 );
-
-const newBg = new THREE.Mesh(new THREE.SphereGeometry(140, 64, 64));
 
 // Lighting
 var ambientLight = new THREE.AmbientLight(0x333333);
@@ -78,11 +79,11 @@ controls.maxDistance = 1000;
 controls.minDistance = 1;
 // Scene
 var scene = new THREE.Scene();
-scene.add(earth);
-scene.add(moon);
+scene.add(earthObject);
+scene.add(moonObject);
 scene.add(ambientLight);
 scene.add(light);
-scene.add(clouds);
+scene.add(cloudsObject);
 scene.add(background);
 
 function addStars() {
@@ -112,13 +113,13 @@ function moveCamera() {
 
 function animate() {
   requestAnimationFrame(animate);
-  earth.rotation.y += 0.002;
-  moon.rotation.y += 0.0001;
-  clouds.rotation.y += 0.0018;
+  earthObject.rotation.y += 0.002;
+  moonObject.rotation.y += 0.0001;
+  cloudsObject.rotation.y += 0.0018;
 
   // Orbit
-  moon.position.x = -10 * Math.cos(earth.rotation.y);
-  moon.position.z = 10 * Math.sin(earth.rotation.y);
+  moonObject.position.x = -10 * Math.cos(earthObject.rotation.y);
+  moonObject.position.z = 10 * Math.sin(earthObject.rotation.y);
 
   controls.update();
   renderer.render(scene, camera);
