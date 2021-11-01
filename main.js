@@ -10,7 +10,9 @@ import galaxy from './assets/galaxy.png';
 // Earth
 const Earth = new THREE.SphereGeometry(0.5, 64, 64);
 const material = new THREE.MeshPhongMaterial({
-  map: new THREE.TextureLoader().load(earth),
+  map: new THREE.TextureLoader().load(
+    'https://acaua.gitlab.io/webgl-with-threejs/img/textures/earth/earth-texture.jpg'
+  ),
   bumpMap: new THREE.TextureLoader().load(clouds),
   bumpScale: 0.00005,
   specularMap: new THREE.TextureLoader(water),
