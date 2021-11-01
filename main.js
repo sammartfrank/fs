@@ -6,13 +6,11 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 // Earth
 const Earth = new THREE.SphereGeometry(0.5, 64, 64);
 const material = new THREE.MeshPhongMaterial({
-  // map: new THREE.TextureLoader().load(
-  //   'https://acaua.gitlab.io/webgl-with-threejs/img/textures/earth/earth-texture.jpg'
-  // ),
+
   map: new THREE.TextureLoader().load('/assets/png/cloudless4k.jpg'),
-  bumpMap: new THREE.TextureLoader().load('./assets/png/clouds4k.png'),
+  bumpMap: new THREE.TextureLoader().load('/assets/png/clouds4k.png'),
   bumpScale: 0.00005,
-  specularMap: new THREE.TextureLoader('/assets/water_4k.png'),
+  specularMap: new THREE.TextureLoader('/assets/png/water_4k.png'),
   specular: new THREE.Color('grey'),
   shininess: 2,
 });
@@ -21,7 +19,7 @@ let earth = new THREE.Mesh(Earth, material);
 // Moon
 const Moon = new THREE.SphereGeometry(0.125, 32, 32);
 const moonMaterial = new THREE.MeshPhongMaterial({
-  map: new THREE.TextureLoader().load('/assets/png/mooon.jpeg'),
+  map: new THREE.TextureLoader().load('/assets/png/mooon.jpg'),
 });
 let moon = new THREE.Mesh(Moon, moonMaterial);
 9;
