@@ -7,6 +7,7 @@ import moon from './assets/moon.jpg';
 import clouds from './assets/clouds.png';
 import water from './assets/water.png';
 import galaxy from './assets/galaxy.png';
+import astro  from './assets/astro.jpg';
 // Earth
 const Earth = new THREE.SphereGeometry(0.5, 64, 64);
 const material = new THREE.MeshPhongMaterial({
