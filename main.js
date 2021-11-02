@@ -2,12 +2,15 @@ import './style.css';
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
 import earth from './assets/earth.jpg';
 import moon from './assets/moon.jpg';
 import clouds from './assets/clouds.png';
 import water from './assets/water.png';
 import galaxy from './assets/galaxy.png';
-import astro  from './assets/astro.jpg';
+import astro from './assets/astro.jpg';
+import frank from './assets/frank.jpg';
+
 // Earth
 const Earth = new THREE.SphereGeometry(0.5, 64, 64);
 const material = new THREE.MeshPhongMaterial({

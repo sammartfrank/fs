@@ -5,6 +5,10 @@
   font-weight: 400;
   font-style: normal;
 }
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
 
 body {
   font-family: 'Nanum Gothic Coding', monospace;
@@ -87,6 +91,19 @@ section {
   bottom: 10;
   margin: 0 auto;
 }
+#avatar {
+  background: url('/assets/frank.jpg');
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: 0 auto;
+  filter: grayscale(100%);
+}
+#avatar:hover {
+  background: url('/assets/astro.jpg');
+  background-size: cover;
+}
 
 img {
   display: inline;
@@ -97,7 +114,7 @@ img {
 
 .frank {
   height: 100px;
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
   position: relative;
   top: 38.6%;
   left: 15%;
@@ -115,7 +132,7 @@ img {
 }
 
 .frank:hover {
-  filter: grayscale(0%);
+  /* filter: grayscale(0%); */
   transition: 0.5s;
 }
 
